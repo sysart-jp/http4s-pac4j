@@ -135,7 +135,7 @@ class Http4sWebContext[F[_]: Sync](
 
   override def getServerPort: Int = request.serverPort.map(_.value).getOrElse(0)
 
-  override def getScheme: String = request.uri.scheme.map(_.value).orNull
+  override def getScheme: String = request.uri.scheme.map(_.value.toString).orNull
 
   override def isSecure: Boolean = request.isSecure.getOrElse(false)
 
@@ -183,7 +183,7 @@ class Http4sWebContext[F[_]: Sync](
   override lazy val getRequestContent: String =
     bodyExtractor(request.bodyText.compile.to(Collector.string))
 
-  override def getProtocol: String = request.uri.scheme.get.value
+  override def getProtocol: String = request.uri.scheme.get.value.toString
 
   def setResponseStatus(code: Int): Unit = {
     logger.debug(s"setResponseStatus $code")
