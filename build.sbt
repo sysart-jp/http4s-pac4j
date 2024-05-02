@@ -1,4 +1,4 @@
-crossScalaVersions := Seq("2.12.18", "2.13.12", "3.3.1")
+scalaVersion := "2.13.14"
 organization := "org.pac4j"
 version      := "5.0.0-SNAPSHOT"
 
